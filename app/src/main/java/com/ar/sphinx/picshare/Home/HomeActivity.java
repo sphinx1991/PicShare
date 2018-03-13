@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.ar.sphinx.picshare.R;
 import com.ar.sphinx.picshare.utils.BottomNavViewHelper;
+import com.ar.sphinx.picshare.utils.SectionsPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class HomeActivity extends AppCompatActivity {

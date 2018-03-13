@@ -1,4 +1,4 @@
-package com.ar.sphinx.picshare.Home;
+package com.ar.sphinx.picshare.utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
