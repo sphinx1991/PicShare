@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/top_profile_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/top_profile_bar"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_profile_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_grey_bottom_border"
+            android:layout_below="@id/top_profile_bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorPrimaryDark" />
+
+                <include layout="@layout/snippet_profile_counts" />
+
+            </LinearLayout>
+            
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/rl_profile_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_profile_one"
+            android:orientation="vertical"
+            android:background="@drawable/white_grey_bottom_border"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sphinx"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:padding="2dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I live in India"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
+                android:padding="2dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ankit30rajput@gmail.com"
+                android:textColor="@color/link"
+                android:textSize="14sp"
+                android:padding="2dp"
+                android:layout_marginStart="8dp"/>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_profile_two">
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/grid_view"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</merge>
