@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ar.sphinx.picshare.R;
+import com.ar.sphinx.picshare.utils.AppUtils;
 import com.ar.sphinx.picshare.utils.BottomNavViewHelper;
 import com.ar.sphinx.picshare.utils.SectionsPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -42,6 +43,8 @@ public class HomeActivity extends AppCompatActivity {
 		tabLayout.getTabAt(1).setIcon(R.drawable.ic_home);
 		tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
 
+		AppUtils.LogMsgUtil(TAG,"settingupViewpager");
+
 	}
 
 	private void setupBottomNavView() {
@@ -51,5 +54,6 @@ public class HomeActivity extends AppCompatActivity {
 		Menu menu = bottomNavigationViewEx.getMenu();
 		MenuItem item = menu.getItem(ACTIVITY_NUM);
 		item.setChecked(true);
+		AppUtils.LogMsgUtil(TAG,"setting up bottomnavview");
 	}
 }

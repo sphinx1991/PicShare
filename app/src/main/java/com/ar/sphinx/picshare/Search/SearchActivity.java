@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ar.sphinx.picshare.R;
+import com.ar.sphinx.picshare.utils.AppUtils;
 import com.ar.sphinx.picshare.utils.BottomNavViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -36,5 +37,6 @@ public class SearchActivity extends AppCompatActivity {
 		Menu menu = bottomNavigationViewEx.getMenu();
 		MenuItem item = menu.getItem(ACTIVITY_NUM);
 		item.setChecked(true);
+		AppUtils.LogMsgUtil(TAG,"setup bottom nav view finished");
 	}
 }

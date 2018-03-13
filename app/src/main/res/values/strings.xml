@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PicShare</string>
+    <string name="fragment_edit_profile">Edit Profile</string>
+    <string name="fragment_signout">Sign Out</string>
 </resources>

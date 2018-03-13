@@ -34,7 +34,7 @@ public class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
 		return fragmentList.size();
 	}
 
-	private void addFragment(Fragment fragment,String fragmentName){
+	public void addFragment(Fragment fragment,String fragmentName){
 		fragmentList.add(fragment);
 		mFragments.put(fragment,fragmentList.size()-1);
 		mFragmentNumbers.put(fragmentName,fragmentList.size()-1);

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/layout_center_viewpager"/>
+
     <RelativeLayout
+        android:id="@+id/rel_layout_acc_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

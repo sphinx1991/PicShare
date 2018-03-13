@@ -1,4 +1,4 @@
-package com.ar.sphinx.picshare.Home;
+package com.ar.sphinx.picshare.Profile;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,21 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ar.sphinx.picshare.R;
-import com.ar.sphinx.picshare.utils.AppUtils;
 
 /**
- * Created by sPhinx on 04/03/18.
+ * Created by sPhinx on 14/03/18.
  */
 
-public class CameraFragment extends Fragment{
+public class SignOutFragment extends Fragment {
 
-	private static final String TAG = "CameraFragment";
+	private static final String TAG = "SignOutFragment";
 
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		AppUtils.LogMsgUtil(TAG,"onCreateView");
-		View view = inflater.inflate(R.layout.fragment_camera,container,false);
+		View view = inflater.inflate(R.layout.fragment_signout,container,false);
 		return view;
 	}
 }
