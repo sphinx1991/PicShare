@@ -1,0 +1,143 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_profile_center_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/img_profilepic"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_profilepic"
+                    android:padding="5dp"
+                    android:text="Change Pic" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_profile_center_center"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/rl_profile_center_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+               <EditText
+                   android:id="@+id/tv_profile_username"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="8dp"
+                   android:layout_marginEnd="8dp"
+                   android:hint="username"
+                   android:textSize="16sp"
+                   android:drawableStart="@drawable/ic_home"
+                   android:drawablePadding="8dp"/>
+
+                <EditText
+                    android:id="@+id/tv_profile_displayname"
+                    android:layout_below="@+id/tv_profile_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="username"
+                    android:textSize="16sp"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawablePadding="8dp"/>
+
+                <EditText
+                    android:id="@+id/tv_profile_desc"
+                    android:layout_below="@+id/tv_profile_displayname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="username"
+                    android:textSize="16sp"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawablePadding="8dp"/>
+
+                <EditText
+                    android:id="@+id/tv_profile_website"
+                    android:layout_below="@+id/tv_profile_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="username"
+                    android:textSize="16sp"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawablePadding="8dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_private_info"
+                android:layout_below="@id/rl_profile_center_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:background="@drawable/white_grey_bottom_border"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:text="PRIVATE INFORMATION"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_profile_center_bottom"
+            android:layout_below="@id/tv_private_info"
+            android:labelFor="@id/tv_private_info"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/tv_profile_email"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="email"
+                android:textSize="16sp"
+                android:drawableStart="@drawable/ic_home"
+                android:drawablePadding="8dp"/>
+
+            <EditText
+                android:id="@+id/tv_profile_phone"
+                android:layout_below="@id/tv_profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="phone number"
+                android:textSize="16sp"
+                android:drawableStart="@drawable/ic_home"
+                android:drawablePadding="8dp"/>
+
+        </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</merge>
