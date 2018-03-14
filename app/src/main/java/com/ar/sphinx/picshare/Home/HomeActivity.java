@@ -12,7 +12,9 @@ import com.ar.sphinx.picshare.R;
 import com.ar.sphinx.picshare.utils.AppUtils;
 import com.ar.sphinx.picshare.utils.BottomNavViewHelper;
 import com.ar.sphinx.picshare.utils.SectionsPagerAdapter;
+import com.ar.sphinx.picshare.utils.UniversalImageLoader;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -24,9 +26,10 @@ public class HomeActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Log.d(TAG, "onCreate: Running ");
-
+		initImageLoader();
 		setupBottomNavView();
 		setupViewPager();
+
 	}
 
 	private void setupViewPager() {
@@ -55,5 +58,10 @@ public class HomeActivity extends AppCompatActivity {
 		MenuItem item = menu.getItem(ACTIVITY_NUM);
 		item.setChecked(true);
 		AppUtils.LogMsgUtil(TAG,"setting up bottomnavview");
+	}
+
+	private void initImageLoader() {
+		UniversalImageLoader imageLoader = new UniversalImageLoader(this);
+		ImageLoader.getInstance().init(imageLoader.getConfig());
 	}
 }

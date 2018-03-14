@@ -1,6 +1,7 @@
 package com.ar.sphinx.picshare.Profile;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,13 +9,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ar.sphinx.picshare.R;
 import com.ar.sphinx.picshare.utils.AppUtils;
 import com.ar.sphinx.picshare.utils.BottomNavViewHelper;
+import com.ar.sphinx.picshare.utils.GridImageAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.util.ArrayList;
 
 /**
  * Created by sPhinx on 03/03/18.
@@ -24,6 +30,9 @@ public class ProfileActivity extends AppCompatActivity{
 
 	private static final String TAG = "ProfileActivity";
 	public static final int ACTIVITY_NUM = 4;
+	private ProgressBar progressBar;
+	private ImageView imageView;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +40,38 @@ public class ProfileActivity extends AppCompatActivity{
 		setContentView(R.layout.activity_profile);
 		Log.d(TAG, "onCreate: Running ");
 
+		setupViews();
 		setupBottomNavView();
 		setupToolbar();
+
+		gridSetup();
+	}
+
+	private void gridSetup() {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		list.add("https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/08/21/20/android-oreo-2.png");
+		setupImageGrids(list);
+	}
+
+	private void setupImageGrids(ArrayList<String> imageUrls) {
+		GridView gridView = findViewById(R.id.grid_view);
+		GridImageAdapter adapter = new GridImageAdapter(this,R.layout.layout_gridview,imageUrls);
+		gridView.setAdapter(adapter);
+	}
+
+	private void setupViews(){
+		imageView = findViewById(R.id.img_edit_profile_pic);
+		progressBar = findViewById(R.id.profile_progress_bar);
+		progressBar.setVisibility(View.GONE);
 	}
 
 	private void setupToolbar() {

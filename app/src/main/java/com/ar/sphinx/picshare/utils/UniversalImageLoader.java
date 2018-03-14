@@ -49,9 +49,9 @@ public class UniversalImageLoader {
 		return configuration;
 	}
 
-	public static void setImage(String imgUrl, ImageView imageView, final ProgressBar progressBar,String append){
+	public static void setImage(String imgUrl, ImageView imageView, final ProgressBar progressBar){
 		ImageLoader imageLoader = ImageLoader.getInstance();
-		imageLoader.displayImage(append + imgUrl, imageView, new ImageLoadingListener() { //callback number to inform
+		imageLoader.displayImage(imgUrl, imageView, new ImageLoadingListener() { //callback number to inform
 																							  //when image loads/fail and what to do
 			@Override
 			public void onLoadingStarted(String imageUri, View view) {
