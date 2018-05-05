@@ -1,18 +1,22 @@
 package com.ar.sphinx.picshare.Home;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ar.sphinx.picshare.Login.LoginActivity;
 import com.ar.sphinx.picshare.R;
 import com.ar.sphinx.picshare.utils.AppUtils;
 import com.ar.sphinx.picshare.utils.BottomNavViewHelper;
 import com.ar.sphinx.picshare.utils.SectionsPagerAdapter;
 import com.ar.sphinx.picshare.utils.UniversalImageLoader;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -20,16 +24,36 @@ public class HomeActivity extends AppCompatActivity {
 
 	private static final String TAG = "HomeActivity";
 	public static final int ACTIVITY_NUM = 0;
+	private FirebaseAuth mAuth;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Log.d(TAG, "onCreate: Running ");
+		setupFirebaseAuth();
 		initImageLoader();
 		setupBottomNavView();
 		setupViewPager();
 
+	}
+
+	private void setupFirebaseAuth() {
+		mAuth = FirebaseAuth.getInstance();
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		FirebaseUser currentUser = mAuth.getCurrentUser();
+		checkCurrentUser(currentUser);
+	}
+
+	private void checkCurrentUser(FirebaseUser currentUser) {
+		if(currentUser == null){
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
+		}
 	}
 
 	private void setupViewPager() {
@@ -46,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
 		tabLayout.getTabAt(1).setIcon(R.drawable.ic_home);
 		tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
 
-		AppUtils.LogMsgUtil(TAG,"settingupViewpager");
+		AppUtils.LogMsgUtil(TAG,"setting up Viewpager");
 
 	}
 
