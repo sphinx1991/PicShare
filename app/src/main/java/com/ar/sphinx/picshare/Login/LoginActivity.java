@@ -1,5 +1,6 @@
 package com.ar.sphinx.picshare.Login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ar.sphinx.picshare.Home.HomeActivity;
 import com.ar.sphinx.picshare.R;
 import com.ar.sphinx.picshare.utils.AppUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 			public void onClick(View v) {
 				String email = etEmail.getText().toString();
 				String pass = etPassword.getText().toString();
-				if(email.isEmpty() && pass.isEmpty()){
+				if(email.isEmpty() || pass.isEmpty()){
 					AppUtils.showAtoast("Please fill out all details",LoginActivity.this);
 				}else {
 					progressBar.setVisibility(View.VISIBLE);
@@ -73,8 +75,20 @@ public class LoginActivity extends AppCompatActivity {
 				}
 			}
 		});
+		if(mAuth.getCurrentUser()!=null){
+			startActivity(new Intent(this, HomeActivity.class));
+			finish();
+		}
+		tvNewUser.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+				finish();
+			}
+		});
 	}
 
+	/********** Firebase setup *********************/
 	private void setupFirebaseAuth() {
 		mAuth = FirebaseAuth.getInstance();
 	}
@@ -87,7 +101,8 @@ public class LoginActivity extends AppCompatActivity {
 	}
 	private void checkCurrentUser(FirebaseUser currentUser) {
 		if(currentUser == null){
-
+			startActivity(new Intent(this,LoginActivity.class));
+			finish();
 		}
 	}
 

@@ -24,7 +24,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="46dp"
         app:layout_constraintBottom_toTopOf="@+id/eil_2"
@@ -69,7 +69,7 @@
 
     <TextView
         android:id="@+id/tv_newUser"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="117dp"
         android:layout_marginEnd="117dp"
