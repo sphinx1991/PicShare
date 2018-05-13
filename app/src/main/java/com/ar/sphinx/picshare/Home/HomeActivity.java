@@ -31,10 +31,18 @@ public class HomeActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Log.d(TAG, "onCreate: Running ");
-		setupFirebaseAuth();
 		initImageLoader();
 		setupBottomNavView();
 		setupViewPager();
+
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		setupFirebaseAuth();
+		checkCurrentUser(mAuth.getCurrentUser());
+		Log.d(TAG, "onStart: Home:"+mAuth.getCurrentUser().getEmail());
 
 	}
 
@@ -42,17 +50,11 @@ public class HomeActivity extends AppCompatActivity {
 		mAuth = FirebaseAuth.getInstance();
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		FirebaseUser currentUser = mAuth.getCurrentUser();
-		checkCurrentUser(currentUser);
-	}
-
 	private void checkCurrentUser(FirebaseUser currentUser) {
 		if(currentUser == null){
 			Intent intent = new Intent(this, LoginActivity.class);
 			startActivity(intent);
+			finish();
 		}
 	}
 

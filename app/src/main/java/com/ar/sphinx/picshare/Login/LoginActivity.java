@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		Log.d(TAG, "onCreate: Running ");
-		setupFirebaseAuth();
+//		setupFirebaseAuth();
 		init();
 	}
 
@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
 								Log.d(TAG, "signInWithEmail:success");
 								AppUtils.showAtoast("succesfull",LoginActivity.this);
 								progressBar.setVisibility(View.GONE);
+								startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+								finish();
 							} else {
 								// If sign in fails, display a message to the user.
 								Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -75,10 +77,6 @@ public class LoginActivity extends AppCompatActivity {
 				}
 			}
 		});
-		if(mAuth.getCurrentUser()!=null){
-			startActivity(new Intent(this, HomeActivity.class));
-			finish();
-		}
 		tvNewUser.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -94,16 +92,17 @@ public class LoginActivity extends AppCompatActivity {
 	}
 
 	@Override
-	public void onStart() {
+	protected void onStart() {
 		super.onStart();
-		FirebaseUser currentUser = mAuth.getCurrentUser();
-		checkCurrentUser(currentUser);
+		setupFirebaseAuth();
+//		checkCurrentUser(mAuth.getCurrentUser());
 	}
+
 	private void checkCurrentUser(FirebaseUser currentUser) {
 		if(currentUser == null){
-			startActivity(new Intent(this,LoginActivity.class));
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
 			finish();
 		}
 	}
-
 }
