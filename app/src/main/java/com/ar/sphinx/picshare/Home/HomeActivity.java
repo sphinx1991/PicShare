@@ -42,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
 		super.onStart();
 		setupFirebaseAuth();
 		checkCurrentUser(mAuth.getCurrentUser());
-		Log.d(TAG, "onStart: Home:"+mAuth.getCurrentUser().getEmail());
 
 	}
 

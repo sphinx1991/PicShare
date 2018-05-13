@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import com.ar.sphinx.picshare.R;
 import com.ar.sphinx.picshare.models.User;
+import com.ar.sphinx.picshare.models.UserAccountSettings;
 import com.ar.sphinx.picshare.utils.AppUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -107,17 +108,19 @@ public class RegisterActivity extends AppCompatActivity {
 			public void onDataChange(DataSnapshot dataSnapshot) {
 				// This method is called once with the initial value and again
 				// whenever data at this location is updated.
-				String value = dataSnapshot.getValue(String.class);
-				Log.d(TAG, "Value is: " + value);
 
 				//check if username is not already in user
 				if(checkIfUserExits(username,dataSnapshot)){
 					append = mDataRef.push().getKey().substring(0,7);
 					Log.d(TAG, "onDataChange: Name already exits. Appending it :"+ append);
 					tempuserName = tempuserName +append;
+				}else {
+					tempuserName = username;
 				}
 
 				//add new user to database
+				addNewUser(etEmail.getText().toString(),tempuserName,"","","");
+				progressBar.setVisibility(View.GONE);
 
 				//add new user_account_settings to the database
 			}
@@ -130,10 +133,24 @@ public class RegisterActivity extends AppCompatActivity {
 		});
 	}
 
+	private void addNewUser(String email,String username,String desc,String website,String profile_photo){
+		User user = new User(email,"1","user1",username);
+		mDataRef.child("users")
+				.child("user1")
+				.setValue(user);
+
+		UserAccountSettings accountSettings = new UserAccountSettings(desc,username,"0","0","0"
+				,profile_photo,username);
+		mDataRef.child("user_account_settings")
+				.child("user1")
+				.setValue(accountSettings);
+		AppUtils.showAtoast("user added",this);
+	}
+
 	private boolean checkIfUserExits(String username, DataSnapshot dataSnapshot){
 		Log.d(TAG, "checkIfUserExits: "+ username );
 		User user = new User();
-		for(DataSnapshot dataSnap : dataSnapshot.getChildren()){
+		for(DataSnapshot dataSnap : dataSnapshot.child("user1").getChildren()){
 			Log.d(TAG, "checkIfUserExits: dataSnapshot:"+ dataSnapshot);
 			user.setUsername(dataSnap.getValue(User.class).getUsername());
 			if(user.getUsername().equals(username)){
